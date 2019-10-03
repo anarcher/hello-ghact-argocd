@@ -3,9 +3,21 @@ kind: Config
 build:
   artifacts:
   - image: docker.pkg.github.com/anarcher/hello-ghact-argocd/hello-world
-  local: 
-    push: false
+  local:
+    push: true
 deploy:
   kubectl:
     manifests:
     - k8s/*.yaml
+profiles:
+- name: test
+  build:
+    local:
+      push: false
+- name: publish
+  build:
+    tagPolicy:
+      envTemplate:
+        template: "{{.IMAGE_NAME}}:{{.IMAGE_TAG}}"
+    local:
+      push: true
