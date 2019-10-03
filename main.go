@@ -2,12 +2,19 @@ package main
 
 import (
 	"fmt"
+	"net/http"
 	"time"
 )
 
-func main() {
-	for {
-		fmt.Println("Hello world!")
-		time.Sleep(time.Second * 1)
+func handler(w http.ResponseWriter, r *http.Request) {
+	current_time := time.Now().Local()
+	fmt.Fprintf(w, "Hello, You're running example-go! %s\n\n", current_time.Format("2006-01-02 15:04:05"))
+	for k, v := range r.Header {
+		fmt.Fprintf(w, "%s: %s\n", k, v)
 	}
+}
+
+func main() {
+	http.HandleFunc("/", handler)
+	http.ListenAndServe(":12222", nil)
 }

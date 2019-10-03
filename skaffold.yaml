@@ -2,7 +2,7 @@ apiVersion: skaffold/v1beta11
 kind: Config
 build:
   artifacts:
-  - image: docker.pkg.github.com/anarcher/hello-ghact-argocd/hello-world
+  - image: anarcher/hello-ghact-argocd
   local:
     push: true
 deploy:
