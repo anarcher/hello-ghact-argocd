@@ -1,0 +1,11 @@
+name: skaffold-build
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest  
+    steps:
+    - uses: actions/checkout@v1
+    - name: skaffold build
+      uses: anarcher/skaffold-action@master
+      with:
+        skaffold: build
