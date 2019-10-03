@@ -3,6 +3,8 @@ kind: Config
 build:
   artifacts:
   - image: docker.pkg.github.com/anarcher/hello-ghact-argocd/hello-world
+  local: 
+    push: false
 deploy:
   kubectl:
     manifests:
