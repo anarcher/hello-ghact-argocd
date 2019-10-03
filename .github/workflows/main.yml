@@ -5,7 +5,11 @@ jobs:
     runs-on: ubuntu-latest  
     steps:
     - uses: actions/checkout@v1
+    - name: login docker.pkg.github.com
+      run: echo ${{ secrets.DOCKER_GITHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKER_GITHUB_USERNAME }} --password-stdin docker.pkg.github.com
     - name: skaffold build
       uses: anarcher/skaffold-action@master
       with:
         skaffold: build
+    - name: logout docker.pkg.github.com
+      run: docker logout docker.pkg.github.com 
