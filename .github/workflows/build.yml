@@ -8,4 +8,4 @@ jobs:
     - name: skaffold build
       uses: anarcher/skaffold-action@master
       with:
-        skaffold: build
+        skaffold: build -p test
