@@ -8,10 +8,11 @@ jobs:
     runs-on: ubuntu-latest  
     steps:
     - uses: actions/checkout@v1
-    - name: skaffold build
+    - name: skaffold build & publish - ${{ github.ref }}
       uses: anarcher/skaffold-action@master
       with:
         skaffold: build -p publish
+        kustomize: edit set image anarcher/hello-ghact-argocd:${IMAGE_TAG} 
         docker_username: ${{ secrets.DOCKER_GITHUB_USERNAME }}
         docker_password: ${{ secrets.DOCKER_GITHUB_PASSWORD }}
       env:
