@@ -21,5 +21,5 @@ jobs:
     - run: cat ./k8s/prod/kustomization.yaml
     - name: commit and push k8s manifests
       run: |
-        git add ./k8s/prod/  -m "Update to ${IMAGE_TAG}"
+        git commit ./k8s/prod/ -m "Update to ${IMAGE_TAG}"
         git push 
