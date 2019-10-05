@@ -23,5 +23,5 @@ jobs:
       run: |
         git config --global user.email "github-action@github"
         git config --global user.name "github-action"
-        git commit ./k8s/prod/ -m "Update to ${IMAGE_TAG}"
-        git push 
+        echo "Update to ${IMAGE_TAG}" | git commit ./k8s/prod/ --file - 
+        git push origin HEAD:master
