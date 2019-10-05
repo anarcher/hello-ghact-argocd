@@ -39,12 +39,12 @@ jobs:
         repository: anarcher/hello-ghact-argocd-config
         ref: refs/heads/master
         token: ${{ secrets.GITHUB_TOKEN }}
-        path: ./config/
+        path: ./hello-ghact-argocd/
     - name: kustomize
       uses: anarcher/skaffold-action@master
       with:
         kustomize: edit set image anarcher/hello-ghact-argocd:${IMAGE_TAG}
-        kustomize_path: ./config/prod/
+        kustomize_path: ./prod/
       env:
         IMAGE_TAG: ${{ github.ref }}
     - name: commit config repository
@@ -55,4 +55,4 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         branch: master
-        directory: ./config/
+        directory: .
