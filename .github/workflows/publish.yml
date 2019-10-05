@@ -25,7 +25,7 @@ jobs:
         git config --global user.name "github-action"
         echo "Update k8s manifests to ${{ github.ref }}" | git commit ./k8s/prod/ --file - 
     - name: push k8s manifests 
-      uses: ad-m/github-push-action@master
+      uses: anarcher/github-push-action@master
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         branch: master
@@ -55,7 +55,7 @@ jobs:
     - name: push config repository
       uses: anarcher/github-push-action@master
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+        github_token: ${{ secrets.GITHUB_PUSH_TOKEN }}
         branch: master
         directory: .
         repository: anarcher/hello-ghact-argocd-config
