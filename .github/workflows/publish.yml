@@ -58,3 +58,5 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         branch: master
         directory: .
+      env:
+        GITHUB_REPOSITORY: anarcher/hello-ghact-argocd-config
