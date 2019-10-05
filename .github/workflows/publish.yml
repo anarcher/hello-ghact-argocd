@@ -21,7 +21,7 @@ jobs:
     - run: cat ./k8s/prod/kustomization.yaml
     - name: commit and push k8s manifests
       run: |
-        git config --global user.email "github-action@github"
-        git config --global user.name "github-action"
-        echo "Update to ${IMAGE_TAG}" | git commit ./k8s/prod/ --file - 
+        git config --global user.email "anarcher@gmail.com"
+        git config --global user.name "anarcher"
+        echo "Update to ${{ github.ref }}" | git commit ./k8s/prod/ --file - 
         git push origin HEAD:master
