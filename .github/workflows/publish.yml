@@ -18,3 +18,4 @@ jobs:
         docker_password: ${{ secrets.DOCKER_GITHUB_PASSWORD }}
       env:
         IMAGE_TAG: ${{ github.ref }}
+    - run: cat ./k8s/prod/kustomization.yaml
