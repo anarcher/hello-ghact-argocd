@@ -49,7 +49,7 @@ jobs:
         IMAGE_TAG: ${{ github.ref }}
     - name: commit config repository
       run: |
-        echo "Update k8s manifests to ${{ github.ref }}" | git commit ./config/  --file - 
+        echo "Update k8s manifests to ${{ github.ref }}" | git commit .  --file - 
     - name: push config repository
       uses: ad-m/github-push-action@master
       with:
