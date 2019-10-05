@@ -37,6 +37,7 @@ jobs:
       uses: actions/checkout@v1
       with:
         repository: anarcher/hello-ghact-argocd-config
+        ref: refs/heads/master
         token: ${{ secrets.GITHUB_TOKEN }}
     - name: kustomize
       uses: anarcher/skaffold-action@master
