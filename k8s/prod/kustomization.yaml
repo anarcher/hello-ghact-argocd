@@ -4,4 +4,4 @@ resources:
 - ../base
 images:
 - name: anarcher/hello-ghact-argocd
-  newTag: v0.1.6
+  newTag: v0.1.7
