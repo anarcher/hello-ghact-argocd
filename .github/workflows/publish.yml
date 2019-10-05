@@ -49,6 +49,8 @@ jobs:
         IMAGE_TAG: ${{ github.ref }}
     - name: commit config repository
       run: |
+        git config --global user.email "github-action@example.com"
+        git config --global user.name "github-action"
         echo "Update k8s manifests to ${{ github.ref }}" | git commit .  --file - 
     - name: push config repository
       uses: ad-m/github-push-action@master
