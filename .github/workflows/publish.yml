@@ -29,3 +29,28 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         branch: master
+  publish-config:
+    runs-on: ubuntu-latest  
+    steps:
+    - name: checkout config repository
+      uses: actions/checkout@v1
+      with:
+        repository: anarcher/hello-ghact-argocd-config
+        token: ${{ secrets.GITHUB_TOKEN }}
+        path: /config
+    - name: kustomize
+      uses: anarcher/skaffold-action@master
+      with:
+        kustomize: edit set image anarcher/hello-ghact-argocd:${IMAGE_TAG}
+        kustomize_path: /config/prod/
+      env:
+        IMAGE_TAG: ${{ github.ref }}
+    - name: commit config repository
+      run: |
+        echo "Update k8s manifests to ${{ github.ref }}" | git commit ./config/ --file - 
+    - name: push config repository
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: master
+        directory: /config
