@@ -9,7 +9,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: skaffold build & publish - ${{ github.ref }}
-      uses: anarcher/skaffold-action@master
+      uses: anarcher/skaffold-action@v1
       with:
         skaffold: build -p publish
         kustomize: edit set image anarcher/hello-ghact-argocd:${IMAGE_TAG} 
@@ -41,7 +41,7 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         path: ./hello-ghact-argocd/
     - name: kustomize
-      uses: anarcher/skaffold-action@master
+      uses: anarcher/skaffold-action@v1
       with:
         kustomize: edit set image anarcher/hello-ghact-argocd:${IMAGE_TAG}
         kustomize_path: ./prod/
