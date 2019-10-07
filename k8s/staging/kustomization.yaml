@@ -2,3 +2,9 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
 - ../base
+images:
+- name: anarcher/hello-ghact-argocd
+  newTag: aaaa
+namespace: staging
+commonLabels:
+    role: api-server
